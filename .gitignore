@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Build output
+dist/
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Others
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Temp files
+temp/
