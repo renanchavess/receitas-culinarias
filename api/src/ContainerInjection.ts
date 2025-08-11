@@ -18,6 +18,8 @@ import { IReceitaService } from './services/IReceitaService';
 import { ReceitaService } from './services/ReceitaService';
 import { IReceitaRepository } from './repositories/IReceitaRepository';
 import { ReceitaRepository } from './repositories/ReceitaRepository';
+import { ICriptografiaService } from './services/ICriptografiaService';
+import { CriptografiaService } from './services/CriptografiaService';
 
 const container = new Container();
 
@@ -27,17 +29,16 @@ container.bind<UsuarioController>(UsuarioController).toSelf();
 container.bind<AutenticacaoController>(AutenticacaoController).toSelf();
 container.bind<TokenService>(TokenService).toSelf();
 
-// Bindings para Categoria
 container.bind<ICategoriaRepository>('ICategoriaRepository').to(CategoriaRepository);
 container.bind<ICategoriaService>('ICategoriaService').to(CategoriaService);
 container.bind<CategoriaController>(CategoriaController).toSelf();
 
-// Bindings para Receita
 container.bind<IReceitaRepository>('IReceitaRepository').to(ReceitaRepository);
 container.bind<IReceitaService>('IReceitaService').to(ReceitaService);
 container.bind<ReceitaController>(ReceitaController).toSelf();
 
-// Configuração do pool de conexões
+container.bind<ICriptografiaService>('ICriptografiaService').to(CriptografiaService);
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'user',
