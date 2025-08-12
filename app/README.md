@@ -9,7 +9,7 @@ Este projeto é o frontend da aplicação Receitas Culinárias, desenvolvido com
 Crie um arquivo `.env` na pasta `app` (já criado) com a URL da API:
 
 ```
-VITE_API_URL=http://localhost:3000
+API_URL=http://localhost:3000
 ```
 
 ## Scripts
