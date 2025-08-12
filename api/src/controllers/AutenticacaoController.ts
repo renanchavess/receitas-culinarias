@@ -36,12 +36,4 @@ export class AutenticacaoController {
       res.status(500).json({ erro: 'Erro ao realizar login' });
     }
   }
-
-  async logout(req: Request, res: Response): Promise<void> {
-    try {
-      res.status(200).json({ mensagem: 'Logout realizado com sucesso' });
-    } catch (erro) {
-      res.status(500).json({ erro: 'Erro ao realizar logout' });
-    }
-  }
 }

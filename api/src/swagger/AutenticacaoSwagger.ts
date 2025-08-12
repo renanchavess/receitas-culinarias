@@ -25,16 +25,4 @@ export const AutenticacaoSwagger = {
       },
     },
   },
-  '/logout': {
-    post: {
-      tags: ['Autenticação'],
-      summary: 'Realiza logout do usuário autenticado',
-      security: [],
-      responses: {
-        200: { description: 'Logout realizado com sucesso' },
-        400: { description: 'Token não fornecido' },
-        401: { description: 'Token inválido' },
-      },
-    },
-  },
 };

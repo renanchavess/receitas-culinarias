@@ -1,21 +1,25 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-6 col-lg-5">
-      <h1 class="h4 mb-3">Login</h1>
-      <form @submit.prevent="onSubmit">
-        <div class="mb-3">
-          <label class="form-label">Login</label>
-          <input v-model="login" type="text" class="form-control" required />
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 col-md-6 col-lg-5 mt-5">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h1 class="h4 mb-4 text-center">Bem-vindo de volta</h1>
+          <form @submit.prevent="onSubmit">
+            <div class="mb-3">
+              <label class="form-label">Login <span class="text-danger">*</span></label>
+              <input v-model="login" type="text" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Senha <span class="text-danger">*</span></label>
+              <input v-model="senha" type="password" class="form-control" required />
+            </div>
+            <button class="btn btn-primary w-100" :disabled="loading">
+              {{ loading ? 'Entrando...' : 'Entrar' }}
+            </button>
+            <p v-if="error" class="text-danger mt-3">{{ error }}</p>
+          </form>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Senha</label>
-          <input v-model="senha" type="password" class="form-control" required />
-        </div>
-        <button class="btn btn-primary w-100" :disabled="loading">
-          {{ loading ? 'Entrando...' : 'Entrar' }}
-        </button>
-        <p v-if="error" class="text-danger mt-3">{{ error }}</p>
-      </form>
+      </div>
     </div>
   </div>
 </template>

@@ -31,9 +31,7 @@ router.beforeEach((to, _from, next) => {
   if (requiresAuth && !token) {
     return next({ name: 'entrar', query: { redirect: to.fullPath } })
   }
-  if (isPublic && token && (to.name === 'entrar' || to.name === 'cadastrar')) {
-    return next({ name: 'receitas' })
-  }
+  
   return next()
 })
 

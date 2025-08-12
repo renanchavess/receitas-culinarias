@@ -63,20 +63,45 @@ export class ReceitaController {
 
       const { idCategorias, nome, tempoPreparoMinutos, porcoes, modoPreparo, ingredientes } = req.body ?? {};
 
-      if (!modoPreparo) {
+      if (!nome || nome.trim() === '') {
+        res.status(400).json({ erro: 'Campo nome é obrigatório' });
+        return;
+      }
+
+      if (!modoPreparo || modoPreparo.trim() === '') {
         res.status(400).json({ erro: 'Campo modoPreparo é obrigatório' });
+        return;
+      }
+
+      if (!idCategorias) {
+        res.status(400).json({ erro: 'Campo categoria é obrigatório' });
+        return;
+      }
+
+      if (!ingredientes || ingredientes.trim() === '') {
+        res.status(400).json({ erro: 'Campo ingredientes é obrigatório' });
+        return;
+      }
+
+      if (!porcoes || porcoes <= 0) {
+        res.status(400).json({ erro: 'Campo porções é obrigatório e deve ser maior que zero' });
+        return;
+      }
+
+      if (!tempoPreparoMinutos || tempoPreparoMinutos <= 0) {
+        res.status(400).json({ erro: 'Campo tempo de preparo é obrigatório e deve ser maior que zero' });
         return;
       }
 
       const agora = new Date();
       await this.receitaService.criarReceita({
         idUsuarios: userId,
-        idCategorias: idCategorias ?? null,
-        nome: nome ?? null,
-        tempoPreparoMinutos: tempoPreparoMinutos ?? null,
-        porcoes: porcoes ?? null,
+        idCategorias: idCategorias,
+        nome: nome,
+        tempoPreparoMinutos: tempoPreparoMinutos,
+        porcoes: porcoes,
         modoPreparo,
-        ingredientes: ingredientes ?? null,
+        ingredientes: ingredientes,
         criadoEm: agora,
         alteradoEm: agora,
       });

@@ -31,7 +31,6 @@ export class Routes {
     this.router.get('/usuarios', (req, res) => this.usuarioController.buscarTodosUsuarios(req, res));
     this.router.post('/usuarios', (req, res) => this.usuarioController.criarUsuario(req, res));
     this.router.post('/login', (req, res) => this.autenticacaoController.login(req, res));
-    this.router.post('/logout', (req, res) => this.autenticacaoController.logout(req, res));
   }
 
   private rotasProtegidas(): void {

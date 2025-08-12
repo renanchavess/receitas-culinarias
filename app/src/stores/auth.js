@@ -15,10 +15,17 @@ export const useAuthStore = defineStore('auth', {
       localStorage.setItem('token', data.token)
     },
     async register({ nome, login, senha }) {
-      await api.post('/usuarios', { nome, login, senha })
+      console.log('Auth store: Enviando requisição de registro...')
+      try {
+        const response = await api.post('/usuarios', { nome, login, senha })
+        console.log('Auth store: Resposta recebida:', response.status, response.data)
+        return response
+      } catch (error) {
+        console.error('Auth store: Erro na requisição:', error)
+        throw error
+      }
     },
-    async logout() {
-      try { await api.post('/logout') } catch { /* ignore */ }
+    logout() {
       this.token = null
       localStorage.removeItem('token')
     },

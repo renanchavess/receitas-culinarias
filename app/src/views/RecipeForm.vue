@@ -9,27 +9,27 @@
       <form @submit.prevent="onSubmit">
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Nome</label>
-            <input v-model="nome" type="text" class="form-control" />
+            <label class="form-label">Nome <span class="text-danger">*</span></label>
+            <input v-model="nome" type="text" class="form-control" required />
           </div>
           <div class="col-md-3">
-            <label class="form-label">Porções</label>
-            <input v-model.number="porcoes" type="number" min="1" class="form-control" />
+            <label class="form-label">Porções <span class="text-danger">*</span></label>
+            <input v-model.number="porcoes" type="number" min="1" class="form-control" required />
           </div>
           <div class="col-md-3">
-            <label class="form-label">Tempo (min)</label>
-            <input v-model.number="tempoPreparoMinutos" type="number" min="1" class="form-control" />
+            <label class="form-label">Tempo (min) <span class="text-danger">*</span></label>
+            <input v-model.number="tempoPreparoMinutos" type="number" min="1" class="form-control" required />
           </div>
           <div class="col-md-6">
-            <label class="form-label">Categoria</label>
-            <select v-model="idCategorias" class="form-select">
-              <option :value="null">Sem categoria</option>
+            <label class="form-label">Categoria <span class="text-danger">*</span></label>
+            <select v-model="idCategorias" class="form-select" required>
+              <option value="">Selecione uma categoria</option>
               <option v-for="c in categorias" :key="c.id" :value="c.id">{{ c.nome }}</option>
             </select>
           </div>
           <div class="col-12">
-            <label class="form-label">Ingredientes</label>
-            <textarea v-model="ingredientes" class="form-control" rows="3"></textarea>
+            <label class="form-label">Ingredientes <span class="text-danger">*</span></label>
+            <textarea v-model="ingredientes" class="form-control" rows="3" required></textarea>
           </div>
           <div class="col-12">
             <label class="form-label">Modo de preparo <span class="text-danger">*</span></label>
