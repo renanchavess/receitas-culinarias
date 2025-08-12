@@ -12,6 +12,14 @@ Sistema completo para gerenciamento de receitas culinárias desenvolvido com **V
 - ✅ API REST documentada com Swagger
 - ✅ Arquitetura em camadas com injeção de dependência
 
+## Segurança
+
+- Senhas são criptografadas com bcrypt
+- Autenticação via JWT
+- Proteção CORS configurada
+- Validação de dados de entrada
+- Middlewares de autenticação
+
 ## Tecnologias Utilizadas
 
 ### Backend
@@ -179,11 +187,3 @@ npm run dev      # Servidor de desenvolvimento
 npm run build    # Build para produção
 npm run preview  # Preview da build
 ```
-
-## 🛡️ Segurança
-
-- Senhas são criptografadas com bcrypt
-- Autenticação via JWT
-- Proteção CORS configurada
-- Validação de dados de entrada
-- Middlewares de autenticação
