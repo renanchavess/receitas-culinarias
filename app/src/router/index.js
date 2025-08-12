@@ -2,20 +2,20 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Lazy-loaded views
 const Login = () => import('../views/Login.vue')
-const Register = () => import('../views/Register.vue')
-const RecipeList = () => import('../views/RecipeList.vue')
-const RecipeForm = () => import('../views/RecipeForm.vue')
-const RecipeDetails = () => import('../views/RecipeDetails.vue')
-const RecipeEdit = () => import('../views/RecipeEdit.vue')
+const CadastroUsuario = () => import('../views/CadastroUsuario.vue')
+const ReceitaListar = () => import('../views/ReceitaListar.vue')
+const ReceitaCadastro = () => import('../views/ReceitaCadastro.vue')
+const ReceitaDetalhes = () => import('../views/ReceitaDetalhes.vue')
+const ReceitaEditar = () => import('../views/ReceitaEditar.vue')
 
 const routes = [
   { path: '/', redirect: '/receitas' },
   { path: '/entrar', name: 'entrar', component: Login, meta: { public: true } },
-  { path: '/cadastrar', name: 'cadastrar', component: Register, meta: { public: true } },
-  { path: '/receitas', name: 'receitas', component: RecipeList, meta: { requiresAuth: true } },
-  { path: '/receitas/novo', name: 'receita-nova', component: RecipeForm, meta: { requiresAuth: true } },
-  { path: '/receitas/:id', name: 'receita-detalhe', component: RecipeDetails, meta: { requiresAuth: true } },
-  { path: '/receitas/:id/editar', name: 'receita-editar', component: RecipeEdit, meta: { requiresAuth: true } },
+  { path: '/cadastrar', name: 'cadastrar', component: CadastroUsuario, meta: { public: true } },
+  { path: '/receitas', name: 'receitas', component: ReceitaListar, meta: { requiresAuth: true } },
+  { path: '/receitas/novo', name: 'receita-nova', component: ReceitaCadastro, meta: { requiresAuth: true } },
+  { path: '/receitas/:id', name: 'receita-detalhe', component: ReceitaDetalhes, meta: { requiresAuth: true } },
+  { path: '/receitas/:id/editar', name: 'receita-editar', component: ReceitaEditar, meta: { requiresAuth: true } },
 ]
 
 const router = createRouter({
