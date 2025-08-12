@@ -41,7 +41,7 @@ Sistema completo para gerenciamento de receitas culinárias desenvolvido com **V
 
 ### 1. Clone o repositório
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/renanchavess/receitas-culinarias.git
 cd receitas-culinarias
 ```
 
@@ -68,7 +68,7 @@ FLUSH PRIVILEGES;
 ```
 
 #### Execute o script de criação das tabelas
-Execute o script SQL localizado em `temp/desafio_rg_receitas_culinarias/banco/script.sql` no seu MySQL.
+Execute o script SQL localizado em `./schema.sql` no seu MySQL.
 
 ### 3. Configuração do Backend
 
