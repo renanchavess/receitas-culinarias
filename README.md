@@ -187,5 +187,3 @@ npm run preview  # Preview da build
 - Proteção CORS configurada
 - Validação de dados de entrada
 - Middlewares de autenticação
-
-## 🐛 Solução de Problemas
