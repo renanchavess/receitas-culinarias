@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { IReceitaService } from '../services/IReceitaService';
+import { FiltroBuscarReceita } from '../DTO/FiltroBuscarReceita';
 
 @injectable()
 export class ReceitaController {
@@ -14,14 +15,24 @@ export class ReceitaController {
         res.status(401).json({ erro: 'Não autenticado' });
         return;
       }
-      const { q, idCategorias } = req.query as any;
-      const filtros: any = {};
-      if (q) filtros.q = String(q);
-      if (idCategorias !== undefined) {
-        const n = Number(idCategorias);
-        if (!Number.isNaN(n)) filtros.idCategorias = n;
+
+      const { consulta, idCategorias } = req.query as any;
+      
+      const filtros: FiltroBuscarReceita = {};
+      
+      if (consulta) {
+        filtros.consulta = String(consulta);
       }
+      
+      if (idCategorias !== undefined) {
+        const categoriaId = Number(idCategorias);
+        if (!Number.isNaN(categoriaId)) {
+          filtros.categoria = categoriaId;
+        }
+      }
+
       const receitas = await this.receitaService.buscarTodasReceitas(userId, filtros);
+      
       res.json(receitas);
     } catch (erro) {
       res.status(500).json({ erro: 'Erro ao buscar receitas' });

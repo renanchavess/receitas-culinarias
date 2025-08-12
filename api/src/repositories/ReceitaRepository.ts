@@ -3,6 +3,7 @@ import mysql from 'mysql2/promise';
 import Receita from '../models/Receita';
 import { IReceitaRepository } from './IReceitaRepository';
 import { RowDataPacket } from 'mysql2';
+import { FiltroBuscarReceita } from '../DTO/FiltroBuscarReceita';
 
 @injectable()
 export class ReceitaRepository implements IReceitaRepository {
@@ -12,18 +13,18 @@ export class ReceitaRepository implements IReceitaRepository {
     this.pool = pool;
   }
 
-  async buscarTodas(userId: number, filtros?: { q?: string; idCategorias?: number }): Promise<Receita[]> {
+  async buscarTodas(userId: number, filtros?: FiltroBuscarReceita): Promise<Receita[]> {
     let query = 'SELECT * FROM receitas WHERE id_usuarios = ?';
     const params: any[] = [userId];
 
-    if (filtros?.idCategorias !== undefined) {
+    if (filtros?.categoria !== undefined) {
       query += ' AND id_categorias = ?';
-      params.push(filtros.idCategorias);
+      params.push(filtros.categoria);
     }
 
-    if (filtros?.q) {
+    if (filtros?.consulta) {
       query += ' AND (nome LIKE ? OR ingredientes LIKE ? OR modo_preparo LIKE ?)';
-      const like = `%${filtros.q}%`;
+      const like = `%${filtros.consulta}%`;
       params.push(like, like, like);
     }
 

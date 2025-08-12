@@ -5,7 +5,7 @@ export const ReceitaSwagger = {
       summary: 'Lista receitas do usuário logado',
       parameters: [
         {
-          name: 'q',
+          name: 'consulta',
           in: 'query',
           required: false,
           description: 'Termo de busca (nome, ingredientes ou modo de preparo)',

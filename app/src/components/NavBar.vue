@@ -18,10 +18,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" v-if="auth.isAuthenticated">
-            <RouterLink class="nav-link" to="/receitas">Lista</RouterLink>
-          </li>
-          <li class="nav-item" v-if="auth.isAuthenticated">
-            <RouterLink class="nav-link" to="/receitas/novo">Nova Receita</RouterLink>
+            <RouterLink class="nav-link" to="/receitas">Início</RouterLink>
           </li>
         </ul>
 
